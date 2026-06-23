@@ -30,6 +30,7 @@ type Parser struct {
 	LineStart   int
 	Package     string
 	TrimPrefix  string
+	TrimSuffix  string
 	TypeName    string
 	ValueType   string
 	WithJSON    bool
@@ -47,12 +48,13 @@ type Enum struct {
 }
 
 // New will create a new parser to use for a given file.
-func New(file, trimPrefix string, lineStart int, json, value bool, ff FormatFunc) *Parser {
+func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, ff FormatFunc) *Parser {
 	return &Parser{
 		File:       file,
 		Format:     ff,
 		LineStart:  lineStart,
 		TrimPrefix: trimPrefix,
+		TrimSuffix: trimSuffix,
 		WithJSON:   json,
 		WithValue:  value,
 	}
@@ -150,11 +152,12 @@ func (ep *Parser) findEnum(cd *ast.GenDecl) {
 	var (
 		iotaValue = 0
 		addEnum   = func(name string, value interface{}) {
+			str := strings.TrimPrefix(name, ep.TrimPrefix)
+			str = strings.TrimSuffix(str, ep.TrimSuffix)
+
 			enum := Enum{
-				String: ep.Format(
-					strings.TrimPrefix(name, ep.TrimPrefix),
-				),
-				Name: name,
+				String: ep.Format(str),
+				Name:   name,
 			}
 
 			if i, ok := value.(int); ok {

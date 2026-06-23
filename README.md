@@ -5,7 +5,7 @@ constants. All you need to do is add a `go generate` line above your constant
 group.
 
 ```go
-//go:generate go-enum --trim "Post" --format snake
+//go:generate go tool go-enum --trim "Post" --format snake
 const (
     PostCreate PostType = 0
     PostRead   PostType = 2
@@ -17,7 +17,7 @@ const (
 If you just want an enum and don't care about the value, use Go's `iota`.
 
 ```go
-//go:generate go-enum --trim "Direction" --format upper
+//go:generate go tool go-enum --trim "Direction" --format upper
 const (
     DirectionUp Direction = iota
     DirectionDown
@@ -33,7 +33,7 @@ adding `--with-value` you implement `Value()` which returns the constants actual
 value.
 
 ```go
-//go:generate go-enum --trim "Answer" --format capitalize-first --no-json --with-value
+//go:generate go tool go-enum --trim "Answer" --format capitalize-first --no-json --with-value
 const (
 	AnswerYes   YesOrNo = "Y"
 	AnswerNo    YesOrNo = "N"
@@ -68,7 +68,7 @@ See the [example](example/) folder for example generated code.
 ## Installation
 
 ```
-go get -u github.com/bombsimon/enum/...
+go get -tool github.com/micronull/enum/cmd/go-enum@latest
 ```
 
 ## Interfaces

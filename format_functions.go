@@ -10,6 +10,7 @@ func FormatFuncs() map[string]func(s string) string {
 	return map[string]func(s string) string{
 		"snake":            strcase.ToSnake,
 		"camel":            strcase.ToLowerCamel,
+		"camel-first":      strcase.ToCamel,
 		"upper":            strings.ToUpper,
 		"lower":            strings.ToLower,
 		"first":            FirstLetter,
