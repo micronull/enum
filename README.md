@@ -12,6 +12,14 @@ const (
     PostUpdate PostType = 4
     PostDelete PostType = 8
 )
+
+
+//go:generate go tool go-enum --trim-suffix "ID" --format camel-first
+const (
+    GoogleID CompanyID = 0
+    YandexID CompanyID = 1
+)
+
 ```
 
 If you just want an enum and don't care about the value, use Go's `iota`.
