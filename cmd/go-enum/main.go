@@ -6,7 +6,7 @@ import (
 
 	"github.com/alecthomas/kingpin"
 
-	"github.com/bombsimon/enum"
+	"github.com/micronull/enum"
 )
 
 func main() {
