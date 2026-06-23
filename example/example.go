@@ -1,6 +1,6 @@
 package example
 
-//go:generate go-enum --trim "Post" --format snake
+//go:generate go tool go-enum --trim "Post" --format snake
 const (
 	PostCreate PostType = 0
 	PostRead   PostType = 2
@@ -8,7 +8,7 @@ const (
 	PostDelete PostType = 8
 )
 
-//go:generate go-enum --trim "Direction" --format upper
+//go:generate go tool go-enum --trim "Direction" --format upper
 const (
 	DirectionUp DirectionType = iota
 	DirectionDown
@@ -16,7 +16,7 @@ const (
 	DirectionRight
 )
 
-//go:generate go-enum --trim "Answer" --format capitalize-first --no-json --with-value
+//go:generate go tool go-enum --trim "Answer" --format capitalize-first --no-json --with-value
 const (
 	AnswerYes   YesOrNo = "Y"
 	AnswerNo    YesOrNo = "N"

@@ -14,6 +14,7 @@ func TestParser_GetEnum(t *testing.T) {
 		description      string
 		fileData         []byte
 		trimPrefix       string
+		trimSuffix       string
 		formatFunc       func(s string) string
 		expectedEnums    []Enum
 		ExpectedTypeName string
@@ -131,7 +132,7 @@ func TestParser_GetEnum(t *testing.T) {
 
 	for _, tc := range cases {
 		t.Run(tc.description, func(t *testing.T) {
-			parser := New(noFile, tc.trimPrefix, lineNo, noJSON, noValue, strings.ToUpper)
+			parser := New(noFile, tc.trimPrefix, tc.trimSuffix, lineNo, noJSON, noValue, strings.ToUpper)
 			err := parser.GetEnum(tc.fileData)
 
 			require.NoError(t, err)

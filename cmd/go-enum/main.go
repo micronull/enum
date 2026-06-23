@@ -15,7 +15,7 @@ func main() {
 		lineNum    = kingpin.Flag("line", "Location of const statement to generate enum from. Uses $GOLINE if that is set.").Default("1").Envar("GOLINE").Int()
 		trimPrefix = kingpin.Flag("trim", "Prefix to trim from the enum type name when generating the strings.").Default("").String()
 		trimSuffix = kingpin.Flag("trim-suffix", "Suffix to trim from the enum type name when generating the strings.").Default("").String()
-		formatFunc = kingpin.Flag("format", "How to format string value").Default("snake").Enum("snake", "camel", "upper", "lower", "first", "first-upper", "first-lower", "capitalize-first", "capitalize-all")
+		formatFunc = kingpin.Flag("format", "How to format string value").Default("snake").Enum("snake", "camel", "camel-first", "upper", "lower", "first", "first-upper", "first-lower", "capitalize-first", "capitalize-all")
 		json       = kingpin.Flag("json", "Generate code implementing (un)marshal interface").Default("true").Bool()
 		value      = kingpin.Flag("with-value", "Generate code implementing Value() to allow the actual value").Default("false").Bool()
 	)
