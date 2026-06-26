@@ -36,6 +36,7 @@ type Parser struct {
 	WithJSON    bool
 	WithValue   bool
 	GeneratedAt string
+	WithAll     bool
 }
 
 // Enum is one enum with a number mapped to a string. The name of the enun will
@@ -48,7 +49,7 @@ type Enum struct {
 }
 
 // New will create a new parser to use for a given file.
-func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, ff FormatFunc) *Parser {
+func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, ff FormatFunc, all bool) *Parser {
 	return &Parser{
 		File:       file,
 		Format:     ff,
@@ -57,6 +58,7 @@ func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, f
 		TrimSuffix: trimSuffix,
 		WithJSON:   json,
 		WithValue:  value,
+		WithAll:    all,
 	}
 }
 

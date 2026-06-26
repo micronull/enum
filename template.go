@@ -14,6 +14,16 @@ import (
 // {{.TypeName}} is an Enum.
 type {{.TypeName}} {{.ValueType}}
 
+{{ if .WithAll }}
+func {{.TypeName}}All ([]{{.TypeName}}) {
+	return []{{.TypeName}}{
+	{{ range $e := .Enums -}}
+		{{$e.Name}},
+	{{ end -}}
+	}	
+}
+{{ end }}
+
 // {{.TypeName}}FromString returns a {{.TypeName}} from it's string representation.
 func {{.TypeName}}FromString(s string) ({{.TypeName}}, error) {
 	switch s {
