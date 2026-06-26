@@ -25,7 +25,7 @@ func main() {
 
 	formatFuncs := enum.FormatFuncs()
 
-	e := enum.New(*fileName, *trimPrefix, *trimSuffix, *lineNum, *json, *value, formatFuncs[*formatFunc], all)
+	e := enum.New(*fileName, *trimPrefix, *trimSuffix, *lineNum, *json, *value, formatFuncs[*formatFunc], *all)
 
 	if err := e.GetEnumFromFile(); err != nil {
 		fmt.Printf("Could not get enums: %s\n", err.Error())
