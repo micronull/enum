@@ -15,7 +15,7 @@ import (
 type {{.TypeName}} {{.ValueType}}
 
 {{ if .WithAll }}
-func {{.TypeName}}All ([]{{.TypeName}}) {
+func {{.TypeName}}All() []{{.TypeName}} {
 	return []{{.TypeName}}{
 	{{ range $e := .Enums -}}
 		{{$e.Name}},
