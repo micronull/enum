@@ -24,19 +24,20 @@ type FormatFunc func(string) string
 // Parser is the parser that will search a file for constants and add each
 // constant as an enum.
 type Parser struct {
-	Enums       []Enum
-	File        string
-	Format      FormatFunc
-	LineStart   int
-	Package     string
-	TrimPrefix  string
-	TrimSuffix  string
-	TypeName    string
-	ValueType   string
-	WithJSON    bool
-	WithValue   bool
-	GeneratedAt string
-	WithAll     bool
+	Enums          []Enum
+	File           string
+	Format         FormatFunc
+	LineStart      int
+	Package        string
+	TrimPrefix     string
+	TrimSuffix     string
+	TypeName       string
+	ValueType      string
+	WithJSON       bool
+	WithValue      bool
+	GeneratedAt    string
+	WithAll        bool
+	StringFuncName string
 }
 
 // Enum is one enum with a number mapped to a string. The name of the enun will
@@ -49,16 +50,17 @@ type Enum struct {
 }
 
 // New will create a new parser to use for a given file.
-func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, ff FormatFunc, all bool) *Parser {
+func New(file, trimPrefix, trimSuffix string, lineStart int, json, value bool, ff FormatFunc, all bool, stringFuncName string) *Parser {
 	return &Parser{
-		File:       file,
-		Format:     ff,
-		LineStart:  lineStart,
-		TrimPrefix: trimPrefix,
-		TrimSuffix: trimSuffix,
-		WithJSON:   json,
-		WithValue:  value,
-		WithAll:    all,
+		File:           file,
+		Format:         ff,
+		LineStart:      lineStart,
+		TrimPrefix:     trimPrefix,
+		TrimSuffix:     trimSuffix,
+		WithJSON:       json,
+		WithValue:      value,
+		WithAll:        all,
+		StringFuncName: stringFuncName,
 	}
 }
 

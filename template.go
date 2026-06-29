@@ -25,10 +25,10 @@ func {{.TypeName}}All() []{{.TypeName}} {
 {{ end }}
 
 // {{.TypeName}}FromString returns a {{.TypeName}} from it's string representation.
-func {{.TypeName}}FromString(s string) ({{.TypeName}}, error) {
+func {{.TypeName}}From{{if eq .StringFuncName ""}}String{{else}}{{.StringFuncName}}{{end}}(s string) ({{.TypeName}}, error) {
 	switch s {
 	{{ range $e := .Enums -}}
-	case {{$e.Name}}.String(){{ if and ($.WithValue) (eq $.ValueType "string") }},{{$e.Name}}.Value(){{ end }}:
+	case {{$e.Name}}.{{if eq $.StringFuncName ""}}String{{else}}{{$.StringFuncName}}{{end}}(){{ if and ($.WithValue) (eq $.ValueType "string") }},{{$e.Name}}.Value(){{ end }}:
 		return {{$e.Name}}, nil
 	{{ end -}}
 	default:
@@ -38,7 +38,7 @@ func {{.TypeName}}FromString(s string) ({{.TypeName}}, error) {
 	}
 }
 
-func (v {{.TypeName}}) String() string {
+func (v {{.TypeName}}) {{if eq .StringFuncName ""}}String{{else}}{{.StringFuncName}}{{end}}() string {
     switch v {
 	{{ range $e := .Enums -}}
 	case {{$e.Name}}:
